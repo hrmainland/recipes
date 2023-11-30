@@ -1,0 +1,13 @@
+<% layout("./boilerplate.ejs")%>
+
+    <div class="container">
+
+        <h1>Index</h1>
+        <ul>
+            <% for (let recipe of recipes) { %>
+                <li>
+                    <%= recipe.name %>
+                </li>
+                <% } %>
+        </ul>
+    </div>
