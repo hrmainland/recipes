@@ -5,7 +5,8 @@ const RecipeSchema = new Schema({
     name: {
         type: String,
         required: [true, 'Recipe must have a name']
-    }
+    },
+    slug: String
 })
 
 module.exports = mongoose.model("Recipe", RecipeSchema);

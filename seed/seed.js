@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Recipe = require("../models/recipe");
+const slugify = require("slugify");
 
 main().catch(err => console.log(err));
 
@@ -10,10 +11,13 @@ async function main() {
 }
 
 async function seedDB() {
-    console.log("here")
+    await Recipe.deleteMany({});
+
+    const name = "Chicken Laksa"
 
     const Laksa = new Recipe({
-        name: "Chicken Laksa"
+        name,
+        slug: slugify(name, {lower: true})
     })
 
     await Laksa.save()

@@ -1,5 +1,6 @@
-express = require('express');
+const express = require('express');
 const path = require('path');
+const slugify = require('slugify');
 const ejsMate = require("ejs-mate")
 const mongoose = require('mongoose');
 
@@ -17,10 +18,19 @@ app.listen(3000, () => {
     console.log("Listening on port 3000")
 })
 
-// a sample page to make sure express is working - DELETE after testing
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
+    res.render("home")
+})
+
+app.get("/recipes", async (req, res) => {
     const recipes = await Recipe.find({})
     res.render("recipes/index", { recipes })
+})
+
+app.get("/recipes/:slug", async (req, res) => {
+    const { slug } = req.params;
+    const recipe = await Recipe.findOne({ slug: slug })
+    res.render('recipes/show', { recipe });
 })
 
 // fire up MONGOOSE

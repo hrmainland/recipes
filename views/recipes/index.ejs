@@ -6,7 +6,9 @@
         <ul>
             <% for (let recipe of recipes) { %>
                 <li>
-                    <%= recipe.name %>
+                    <a href="/recipes/<%= recipe.slug %>">
+                        <%= recipe.name %>
+                    </a>
                 </li>
                 <% } %>
         </ul>
