@@ -4,7 +4,7 @@ const slugify = require('slugify');
 const ejsMate = require("ejs-mate")
 const mongoose = require('mongoose');
 
-const Recipe = require("./models/recipe");
+const recipeRoutes = require("./routes/recipes");
 
 const app = express();
 
@@ -18,20 +18,25 @@ app.listen(3000, () => {
     console.log("Listening on port 3000")
 })
 
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }))
+app.use("/recipes", recipeRoutes);
+app.use(express.static(path.join(__dirname, "public")))
+
+
 app.get("/", (req, res) => {
     res.render("home")
 })
 
-app.get("/recipes", async (req, res) => {
-    const recipes = await Recipe.find({})
-    res.render("recipes/index", { recipes })
-})
-
-app.get("/recipes/:slug", async (req, res) => {
-    const { slug } = req.params;
-    const recipe = await Recipe.findOne({ slug: slug })
-    res.render('recipes/show', { recipe });
-})
+// add a document to the DB collection recording the click event
+app.post('/clicked', (req, res) => {
+    const click = { clickTime: new Date() };
+    console.log(click);
+    console.log(req)
+    console.log(req.body)
+    res.sendStatus(201);
+});
 
 // fire up MONGOOSE
 main().catch(err => console.log(err));
@@ -41,5 +46,3 @@ async function main() {
     await mongoose.connect('mongodb://127.0.0.1:27017/food');
     console.log("Mongoose Connection Open")
 }
-
-// other mongoose code goes here

@@ -1,6 +1,87 @@
 <% layout("./boilerplate.ejs")%>
 
     <div class="container">
+        <a href="/recipes">Back</a>
+        <h1>
+            <%= recipe.name %>
+        </h1>
 
-        <h1><%= recipe.name %></h1>
+        <h2>Ingredients</h2>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Ingredient</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <% let count=1; %>
+                    <% for(let ingredient of recipe.ingredients){ %>
+                        <tr>
+                            <th scope="row">
+                                <%= count %>
+                            </th>
+                            <td class="name-col">
+                                <%= ingredient.name %>
+                            </td>
+                            <td class="quantity-col">
+                                <%= ingredient.quantity %>
+                            </td>
+                            <td class="unit-col">
+                                <%= ingredient.unit %>
+                            </td>
+                            <td>
+                                <button class="btn edit-ingred-btn" type="button" class="btn btn-primary"
+                                    data-bs-toggle="modal" data-bs-target="#ingredientModal"
+                                    ingredient="<%= ingredient.name %>">
+                                    &#9998;
+                                </button>
+                            </td>
+                        </tr>
+                        <% count++; %>
+                            <% } %>
+            </tbody>
+        </table>
+
+        <!-- Modal -->
+        <div class="modal fade" id="ingredientModal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 id="name-heading" class="modal-title fs-5" id="exampleModalLabel"> Ingredient
+                        </h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="#">
+                            <div class="row">
+                                <div class="col">
+                                    <input id="quantity-input" type="number" class="form-control"
+                                        placeholder="Quantity">
+                                </div>
+                                <div class="col">
+                                    <input id="unit-input" type="text" class="form-control" placeholder="Unit">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button id="submit-button" type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        <h2>Method
+        </h2>
+        <p style="white-space: pre-line;">
+            <%- recipe.method %>
+        </p>
     </div>
