@@ -57,17 +57,21 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <form action="#">
-                            <div class="row">
-                                <div class="col">
+                        <div class="row g-2">
+                            <div class="col-md">
+                                <div class="form-floating">
                                     <input id="quantity-input" type="number" class="form-control"
                                         placeholder="Quantity">
-                                </div>
-                                <div class="col">
-                                    <input id="unit-input" type="text" class="form-control" placeholder="Unit">
+                                    <label for="quantity-input">Quantity</label>
                                 </div>
                             </div>
-                        </form>
+                            <div class="col-md">
+                                <div class="form-floating">
+                                    <input id="unit-input" type="text" class="form-control" placeholder="Unit">
+                                    <label for="quantity-input">Unit</label>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -81,7 +85,39 @@
 
         <h2>Method
         </h2>
-        <p style="white-space: pre-line;">
+        <p id="method-text" style="white-space: pre-line;">
             <%- recipe.method %>
         </p>
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#methodModal">
+            Edit Method
+        </button>
+        <form class="mt-5" ethod="POST" action="/recipes/<%=recipe.slug %>?_method=DELETE">
+            <button class="btn btn-danger" type="submit">Delete Recipe</button>
+        </form>
+
+        <!-- Method Modal -->
+        <div class="modal fade" id="methodModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Method</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="/recipes/<%= recipe.slug %>/update-method" method="POST">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Write method here" name="method"
+                                    id="floatingTextarea" style="height:300px;"><%= recipe.method %></textarea>
+                                <label for="floatingTextarea">Method</label>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>

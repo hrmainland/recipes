@@ -21,9 +21,9 @@ const recipes = [
             // Add more ingredients as needed
         ],
         method: `1. Brown ground beef in a pan.
-        2. Add tomato sauce and simmer.
-        3. Cook spaghetti pasta according to package instructions.
-        4. Serve the Bolognese sauce over the cooked spaghetti.`,
+2. Add tomato sauce and simmer.
+3. Cook spaghetti pasta according to package instructions.
+4. Serve the Bolognese sauce over the cooked spaghetti.`,
     },
     {
         name: 'Chicken Alfredo',
@@ -35,9 +35,9 @@ const recipes = [
             // Add more ingredients as needed
         ],
         method: `1. Season and cook chicken breast until fully cooked.
-        2. Heat Alfredo sauce in a separate pan.
-        3. Cook fettuccine pasta according to package instructions.
-        4. Slice the cooked chicken and serve it over the fettuccine with Alfredo sauce.`,
+2. Heat Alfredo sauce in a separate pan.
+3. Cook fettuccine pasta according to package instructions.
+4. Slice the cooked chicken and serve it over the fettuccine with Alfredo sauce.`,
     },
     {
         name: 'Vegetarian Stir Fry',
@@ -49,9 +49,9 @@ const recipes = [
             // Add more ingredients as needed
         ],
         method: `1. Press and cube tofu; stir fry until golden.
-        2. Add broccoli and carrots, stir fry until vegetables are tender.
-        3. Season with soy sauce or your preferred stir fry sauce.
-        4. Serve over rice or noodles.`,
+2. Add broccoli and carrots, stir fry until vegetables are tender.
+3. Season with soy sauce or your preferred stir fry sauce.
+4. Serve over rice or noodles.`,
     },
     {
         name: 'Margherita Pizza',
@@ -63,9 +63,9 @@ const recipes = [
             // Add more ingredients as needed
         ],
         method: `1. Roll out pizza dough and place it on a baking sheet.
-        2. Spread sliced tomatoes over the dough.
-        3. Add slices of fresh mozzarella.
-        4. Bake in a preheated oven until the crust is golden and the cheese is melted.`,
+2. Spread sliced tomatoes over the dough.
+3. Add slices of fresh mozzarella.
+4. Bake in a preheated oven until the crust is golden and the cheese is melted.`,
     },
     // Add more recipe objects as needed
     // ...

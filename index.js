@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const slugify = require('slugify');
+const methodOverride = require('method-override')
 const ejsMate = require("ejs-mate")
 const mongoose = require('mongoose');
 
@@ -18,7 +19,7 @@ app.listen(3000, () => {
     console.log("Listening on port 3000")
 })
 
-
+app.use(methodOverride("_method"))
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use("/recipes", recipeRoutes);
